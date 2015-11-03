@@ -38,7 +38,7 @@ This project aims at bringing the power of qrencode to qml designer UI.
 #### Use Command
 Git clone it.
 
-```Build Command
+```
 make clean(mingw32-make clean)
 qmake
 make （mingw32-make mingw) | nmake(vc)
