@@ -1,6 +1,9 @@
 ## QRCode Powered QML Module
 Designing cool, interactive interfaces. DuoDuoZhijiao came up with a much better answer for QRencode: `QML`, a declarative language perfect for designing UIs (and much more). Here's a sample of how QREncode Plugin For QML looks like:
 
+![Add Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_dduiencode.png)
+![No Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_dduiencode2.png)
+
 ```QML
 import QtQuick 2.3
 import com.duoduo.component 1.0
