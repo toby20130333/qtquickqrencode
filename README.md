@@ -43,6 +43,7 @@ make clean(mingw32-make clean)
 qmake
 make （mingw32-make mingw) | nmake(vc)
 sudo make install (*unix)
+
 ```
 
 ## Use QtCreator
