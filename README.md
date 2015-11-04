@@ -40,6 +40,7 @@ This project aims at bringing the power of qrencode to qml designer UI.
 #### Make Sure Setting your env for Qt SDK
 #### Use Command
 Git clone it.
+Build it
 
 ```
 make clean(mingw32-make clean)
@@ -87,7 +88,7 @@ import com.duoduo.component 1.0
 
 #### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)
 Implemented a QML Extension module that:
-- refer to [http://doc.qt.io/qt-5/qqmlextensionplugin.html](http://doc.qt.io/qt-5/qqmlextensionplugin.html).
+- Refer to [http://doc.qt.io/qt-5/qqmlextensionplugin.html](http://doc.qt.io/qt-5/qqmlextensionplugin.html).
 
 #### Implemented properties
 - qrData           (qrencode data show)
@@ -105,28 +106,30 @@ Implemented a QML Extension module that:
 Above all signals
 
 #### Implemented slots and functions
--all Above slots
--setQrSaveFile(const QString& filePath) //can sava current qrencode to file
+- all Above slots
+- setQrSaveFile(const QString& filePath) //can sava current qrencode to file
 
 
-#### FeedBack
+## FeedBack
 
-contact information
+Contact information
 
-Email(373955953#qq.com, Change#to@)
-QQ: 39559539234
-QQ Group:312125701
-github: [寒山-居士](https://github.com/toby20130333)
+- Email(373955953#qq.com, Change#to@)
+- QQ: 39559539234
+- QQ Group:312125701
+- github: [寒山-居士](https://github.com/toby20130333)
 
 
-#### Thanks
+## Thanks
 
 [https://github.com/penk/terrarium-app](https://github.com/penk/terrarium-app)
 
-#### About Author
+## About Author
 
+```
   var duoduozhijiao = {
     nickName  : "寒山-居士",
     site : "http://www.heilqt.com",
     blog : "http://blog.heilqt.com"
   }
+  ```
