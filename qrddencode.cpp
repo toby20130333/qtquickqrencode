@@ -71,13 +71,16 @@ QString QREnCode::qrDDData()
         return qrData;
     }
 }
-
+///
+/// \brief QREnCode::qrDDLogo
+/// \return set qrcode logo
+///
 QString QREnCode::qrDDLogo()
 {
     if(qrLogo==""){
         return "";
     }else{
-        return qrLogo;
+        return qrLogo.replace("qrc","");
     }
 }
 
