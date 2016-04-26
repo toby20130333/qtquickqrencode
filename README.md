@@ -111,6 +111,9 @@ Implemented a QML Extension module that:
 - setQrSaveFile(const QString& filePath) //can sava current qrencode to file
 
 
+#### modified
+- qrSize is set update size and repaint
+
 ## FeedBack
 
 Contact information

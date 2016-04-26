@@ -136,6 +136,11 @@ void QREnCode::setQrLogo(const QString &logo)
 {
     if(qrLogo != logo){
         qrLogo = logo;
+        if(qrLogo.startsWith("qrc:")){
+            qrLogo = qrLogo.replace("qrc","");
+        }else if(qrLogo.startsWith("file://")){
+            qrLogo = qrLogo.replace("file://","");
+        }
         emit qrLogoChanged(qrLogo);
     }
 }
@@ -145,6 +150,7 @@ void QREnCode::setQrSize(QSize size)
     if(qrSize != size){
         qrSize = size;
         emit qrSizeChanged(qrSize);
+        update();
     }
 }
 
