@@ -6,7 +6,7 @@
 void QtQuickQREncodePlugin::registerTypes(const char *uri)
 {
     // @uri com.duoduo.components
-    qmlRegisterType<QREnCode>(uri, 1, 0, "QREnCode");
+    qmlRegisterType<QREnCode>(uri, 1, 0, "QtQuick2QREncode");
 }
 
 

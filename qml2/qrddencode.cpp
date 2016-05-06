@@ -2,8 +2,12 @@
 #define QRENCODE_WEBSITE "www.heilqt.com"
 
 QREnCode::QREnCode(QQuickItem *parent):
-    QQuickPaintedItem(parent),m_grab(NULL)
+    QQuickPaintedItem(parent)
 {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0))
+#else
+    m_grab = NULL;
+#endif
     qrMargin =5;
     qrSize = QSize(128,128);
     qrForeground = QColor("#0E4963");
@@ -236,20 +240,33 @@ void QREnCode::saveCurViewToFile()
     }
 }
 
+///
+/// \brief QREnCode::saveItemToFile
+/// 屏蔽5.4.0版本以下的
+///
 void QREnCode::saveItemToFile()
 {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0))
+    emit errorMessage("Don't Support this function,Please Use Qt Version greate than 5.4.0");
+#else
+    QuickItemGrabber* m_grab;
     if(m_grab == NULL){
         m_grab = new QuickItemGrabber(this);
         connect(m_grab,SIGNAL(grabbed()),this,SLOT(grabChanged()));
     }
     m_grab->clear();
     m_grab->grab(this,QSize(this->width(),this->height()));
+#endif
 }
 
 void QREnCode::grabChanged()
 {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0))
+    emit errorMessage("Don't Support this function,Please Use Qt Version greate than 5.4.0");
+#else
    if(m_grab->save(qrFilePath)){
        emit qrSaveFileChanged(QCoreApplication::applicationDirPath()+"/"+qrFilePath);
    }
+#endif
 }
 

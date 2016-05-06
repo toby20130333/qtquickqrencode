@@ -8,6 +8,8 @@
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0))
 #include <private/qquickitem_p.h>
+#include <QQuickItem>
+#include <qquickframebufferobject.h>
 #include <private/qquickshadereffectsource_p.h>
 #else
 // Added since Qt 5.4
@@ -63,7 +65,6 @@ bool QuickItemGrabber::grab(QQuickItem *target,QSize targetSize)
         qDebug() << "Can't grab target item";
         return false;
     }
-
     connect(result.data(),SIGNAL(ready()),
             this,SLOT(onGrabResultReady()));
 #endif

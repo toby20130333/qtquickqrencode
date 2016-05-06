@@ -1,14 +1,17 @@
-## QRCode Powered QML Module
-Designing cool, interactive interfaces. DuoDuoZhijiao came up with a much better answer for QRencode: `QML`, a declarative language perfect for designing UIs (and much more). Here's a sample of how QREncode Plugin For QML looks like:
+## [2016-05-05 update]QRCode Powered Support QWidgets And QML(qml1 and qml2) Module
+Designing cool, interactive interfaces. DuoDuoZhijiao came up with a much better answer for QtQuick1QREncode: `QWidgets QML`, 
+a Widget And a declarative language perfect for designing UIs (and much more). 
+Here's a sample of how QtQuick1QREncode Plugin For QML looks like:
 
 ![Add Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_ddui111.png)
 
 ![No Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_ddui22.png)
 
-```QML
+```
+//QML2 code
 import QtQuick 2.3
 import com.duoduo.component 1.0
-    QREnCode{
+    QtQuick1QREncode{
         id:qr
         width: 128
         height: 128
@@ -18,8 +21,8 @@ import com.duoduo.component 1.0
         qrForeground: "#29aee1" //encode color
         qrBackground: "white"
         qrMargin: 2
-        qrMode: QREnCode.MODE_8    //encode model
-		qrLevel: QREnCode.LEVEL_Q // encode level
+        qrMode: QtQuick1QREncode.MODE_8    //encode model
+		qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
         qrLogo: "qrc:/256.png" //or local path or qrc path but not network url
         onQrSaveFileChanged: {
             console.log("We get save file path is :"+qrfilepath)
@@ -27,12 +30,65 @@ import com.duoduo.component 1.0
     }
 ```
 
-This project aims at bringing the power of qrencode to qml designer UI.
+```
+//qml1 Code:
+import QtQuick 1.0 //notice here
+import com.ddui.qmlcomponents 1.0
+
+Item {
+    width: 256
+    height: width
+    visible: true
+    QtQuick1QREncode{
+           id:qr
+           anchors.fill: parent
+           qrSize: Qt.size(width,width)
+           qrData:"www.heilqt.com" //encode contents
+           qrForeground: "#29aee1" //encode color
+           qrBackground: "white"
+           qrMargin: 4
+           qrMode: QtQuick1QREncode.MODE_8    //encode model
+           qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
+           qrLogo: "qrc:/Apple.png" //or local path or qrc path but not network url
+           onQrSaveFileChanged: {
+               console.log("We get save file path is :"+qrfilepath)
+           }
+           onQrSizeChanged:{
+               console.log("Size get save file path is :"+qrsize.width)
+           }
+       }
+    onWidthChanged: {
+        if(width>height){
+            qr.setQrSize(Qt.size(height,height))
+        }else{
+            qr.setQrSize(Qt.size(width,width))
+        }
+    }
+}
+```
+
+```
+//this is a widgets Code
+#include <QApplication>
+#include "dduiqrwidgets.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+    DDuiQRWidgets w;
+    w.resize(400,100);
+    w.show();
+    w.setQrSaveFile("xxx.png");
+    return app.exec();
+}
+```
+
+This project aims at bringing the power of QtQuick1QREncode to qml designer UI and widgets.
 
 
 # Summary
 * [How to build](#how-to-build)
-* [How to use with QREnCode](#how-to-use-with-qml-plugins)
+* [How to use with QtQuick1QREncode](#how-to-use-with-qml-plugins)
 * [How to extend](#how-to-extend)
 * [Todo](#todo)
 
@@ -53,16 +109,16 @@ sudo make install (*unix)
 You may use qtcreator to build it.
 
 
-## How to use with QREnCode
+## How to use with QtQuick1QREncode
 Note that for the following, you need to have `Qt SDK` for Qt5.x or later installed.
 
-#### QREnCode
-You can use QREnCode to encode your qrencode UI.
+#### QtQuick1QREncode
+You can use QtQuick1QREncode to encode your QtQuick1QREncode UI.
 
-```QML
+```
 import QtQuick 2.3
 import com.duoduo.component 1.0
-    QREnCode{
+    QtQuick1QREncode{
         id:qr
         width: 128
         height: 128
@@ -72,8 +128,8 @@ import com.duoduo.component 1.0
         qrForeground: "#29aee1" //encode color
         qrBackground: "white"
         qrMargin: 2
-        qrMode: QREnCode.MODE_8    //encode model
-		qrLevel: QREnCode.LEVEL_Q // encode level
+        qrMode: QtQuick1QREncode.MODE_8    //encode model
+		qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
         qrLogo: "qrc:/256.png" //or local path or qrc path but not network url
         onQrSaveFileChanged: {
             console.log("We get save file path is :"+qrfilepath)
@@ -87,14 +143,14 @@ import com.duoduo.component 1.0
     }
 ```
 
-#### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)
+#### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)(Qt5.x or later)
 Implemented a QML Extension module that:
 - Refer to [http://doc.qt.io/qt-5/qqmlextensionplugin.html](http://doc.qt.io/qt-5/qqmlextensionplugin.html).
 
 #### Implemented properties
-- qrData           (qrencode data show)
-- qrLogo     (qrencode middle logo)
-- qrSize (qrencode size)
+- qrData           (QtQuick1QREncode data show)
+- qrLogo     (QtQuick1QREncode middle logo)
+- qrSize (QtQuick1QREncode size)
 - qrMode    (mode )
 - qrLevel (level )
 - qrCasesen        (casesen upper)
@@ -108,7 +164,31 @@ Implemented a QML Extension module that:
 
 #### Implemented slots and functions
 - all Above slots
-- setQrSaveFile(const QString& filePath) //can sava current qrencode to file
+- setQrSaveFile(const QString& filePath) //can sava current QtQuick1QREncode to file
+
+
+#### Implemented  QWidget Extension USE C++ (Qt5.x or later)
+Implemented a QWidget Extension module that:
+- Refer to how to build share libary
+
+#### Implemented properties
+- qrData           (QtQuick1QREncode data show)
+- qrLogo     (QtQuick1QREncode middle logo)
+- qrSize (QtQuick1QREncode size)
+- qrMode    (mode )
+- qrLevel (level )
+- qrCasesen        (casesen upper)
+- qrMargin   (margin)
+- qrPercent   (percent)
+- qrForeground   (qrForeground)
+- qrBackground   (qrBackground)
+
+#### Implemented signals
+- Above all signals
+
+#### Implemented slots and functions
+- all Above slots
+- setQrSaveFile(const QString& filePath) //can sava current QtQuick1QREncode to file
 
 
 ## FeedBack

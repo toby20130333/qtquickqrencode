@@ -1,27 +1,16 @@
-﻿#ifndef QRENCODE_H
-#define QRENCODE_H
+#ifndef DDUIQRENCODE_H
+#define DDUIQRENCODE_H
 
-#include <QQuickItem>
-#include <QObject>
-#include <QImage>
-#include <QDebug>
-#include <QFile>
-#include <QFileInfo>
-#include <QPainter>
-#include <QBuffer>
-#include <QDateTime>
+#include <QDeclarativeItem>
+#include <QResizeEvent>
 #include "qrencode/3rd/qrencode.h"
-#include <QQuickPaintedItem>
 #include <QPainter>
 #include <QCoreApplication>
-#include <QQuickWindow>
-#include <QQuickItemGrabResult>
-#include "quickitemgrabber.h"
 
-class QREnCode : public QQuickPaintedItem
+class DDuiQREncode : public QDeclarativeItem
 {
     Q_OBJECT
-//    Q_DISABLE_COPY(QREnCode)
+    Q_DISABLE_COPY(DDuiQREncode)
     Q_ENUMS(QR_MODE)
     Q_ENUMS(QR_LEVEL)
 
@@ -35,8 +24,10 @@ class QREnCode : public QQuickPaintedItem
     Q_PROPERTY(qreal qrPercent READ qrDDPercent WRITE setQrPercent NOTIFY qrPercentChanged)
     Q_PROPERTY(QColor qrForeground READ qrDDForeground WRITE setQrForeground NOTIFY qrForegroundChanged)
     Q_PROPERTY(QColor qrBackground READ qrDDBackground WRITE setQrBackground NOTIFY qrBackgroundChanged)
-
 public:
+    DDuiQREncode(QDeclarativeItem *parent = 0);
+    ~DDuiQREncode();
+
     enum QR_MODE {
         MODE_NUL = QR_MODE_NUL,
         MODE_NUM = QR_MODE_NUM,
@@ -54,10 +45,6 @@ public:
         LEVEL_Q = QR_ECLEVEL_Q,
         LEVEL_H = QR_ECLEVEL_H
     };
-
-    QREnCode(QQuickItem *parent = 0);
-    void paint(QPainter* painter);
-    ~QREnCode();
 
     QString qrDDData();
     QString qrDDLogo();
@@ -108,14 +95,17 @@ private:
     QColor qrBackground;
     QString qrFilePath;
 
-    QuickItemGrabber* m_grab;
+//    QuickItemGrabber* m_grab;
     QString icon;
     QByteArray text;
     void saveCurViewToFile();
     void saveItemToFile();
 private slots:
     void grabChanged();
+protected:
+    void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 };
 
-#endif // QRENCODE_H
+QML_DECLARE_TYPE(DDuiQREncode)
 
+#endif // DDUIQRENCODE_H
