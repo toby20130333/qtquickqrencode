@@ -11,7 +11,7 @@ Here's a sample of how QtQuick1QREncode Plugin For QML looks like:
 //QML2 code
 import QtQuick 2.3
 import com.duoduo.component 1.0
-    QtQuick1QREncode{
+    QtQuick2QREncode{
         id:qr
         width: 128
         height: 128
@@ -114,34 +114,6 @@ Note that for the following, you need to have `Qt SDK` for Qt5.x or later instal
 
 #### QtQuick1QREncode
 You can use QtQuick1QREncode to encode your QtQuick1QREncode UI.
-
-```
-import QtQuick 2.3
-import com.duoduo.component 1.0
-    QtQuick1QREncode{
-        id:qr
-        width: 128
-        height: 128
-        qrSize: Qt.size(width,width)
-        anchors.centerIn: parent
-        qrData:"duoduozhijiao" //encode contents
-        qrForeground: "#29aee1" //encode color
-        qrBackground: "white"
-        qrMargin: 2
-        qrMode: QtQuick1QREncode.MODE_8    //encode model
-		qrLevel: QtQuick1QREncode.LEVEL_Q // encode level
-        qrLogo: "qrc:/256.png" //or local path or qrc path but not network url
-        onQrSaveFileChanged: {
-            console.log("We get save file path is :"+qrfilepath)
-        }
-    }	
-	//use this function also can save current item to file
-	 function savetofile(obj,filename){
-        obj.grabToImage(function(result) {
-      result.saveToFile(filename);
-    });
-    }
-```
 
 #### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)(Qt5.x or later)
 Implemented a QML Extension module that:
