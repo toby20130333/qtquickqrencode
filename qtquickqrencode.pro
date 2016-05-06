@@ -1,6 +1,3 @@
-
-QT += gui core widgets quick qml
-
 TEMPLATE = subdirs
 
 SUBDIRS +=  qml2\

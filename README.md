@@ -191,6 +191,9 @@ Implemented a QWidget Extension module that:
 - setQrSaveFile(const QString& filePath) //can sava current QtQuick1QREncode to file
 
 
+#### modified
+- qrSize is set update size and repaint
+
 ## FeedBack
 
 Contact information
