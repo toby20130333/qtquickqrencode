@@ -21,4 +21,14 @@ Window {
             console.log("We get save file path is :"+qrfilepath)
         }
     }
+    //以下是测试text别名的使用
+    Component.onCompleted: {
+        tt.setText("fuck 小度");
+    }
+    AliasText{
+        id:tt
+        anchors.centerIn: parent
+        width: parent.width
+        height: 30
+    }
 }

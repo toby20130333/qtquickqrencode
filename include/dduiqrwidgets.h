@@ -15,10 +15,8 @@ class WIDGETSSHARED_EXPORT DDuiQRWidgets :
 {
     Q_OBJECT
     Q_DISABLE_COPY(DDuiQRWidgets)
-
     Q_ENUMS(QR_MODE)
     Q_ENUMS(QR_LEVEL)
-
     Q_PROPERTY(QString qrData READ qrDDData WRITE setQrData NOTIFY qrDataChanged)
     Q_PROPERTY(QString qrLogo READ qrDDLogo WRITE setQrLogo NOTIFY qrLogoChanged)
     Q_PROPERTY(QSize qrSize READ qrDDSize WRITE setQrSize NOTIFY qrSizeChanged)
@@ -33,6 +31,9 @@ public:
     DDuiQRWidgets(QWidget *parent = 0);
     ~DDuiQRWidgets();
 
+    ///
+    /// \brief The QR_MODE enum
+    /// 设置二维码的编码模式
     enum QR_MODE {
         MODE_NUL = QR_MODE_NUL,
         MODE_NUM = QR_MODE_NUM,
@@ -44,6 +45,10 @@ public:
         MODE_FNC1FIRST = QR_MODE_FNC1FIRST,
         MODE_FNC1SECOND = QR_MODE_FNC1SECOND
     };
+    ///
+    /// \brief The QR_LEVEL enum
+    /// 设置二维码编码的识别质量的级别
+    ///
     enum QR_LEVEL {
         LEVEL_L = QR_ECLEVEL_L,
         LEVEL_M = QR_ECLEVEL_M,
@@ -62,7 +67,9 @@ public:
     QColor qrDDForeground();
     QColor qrDDBackground();
 
+    //设置需要编码的数据
     Q_INVOKABLE void setQrData(const QString& data);
+    // 设置二维码的logo
     Q_INVOKABLE void setQrLogo(const QString& logo);
     Q_INVOKABLE void setQrSize(QSize mode);
     Q_INVOKABLE void setQrMode(QR_MODE mode);
@@ -99,8 +106,6 @@ private:
     QColor qrForeground;
     QColor qrBackground;
     QString qrFilePath;
-
-//    QuickItemGrabber* m_grab;
     QString icon;
     QByteArray text;
     void saveCurViewToFile();
