@@ -3,12 +3,13 @@ TEMPLATE = app
 QT += qml quick
 CONFIG += c++11
 
-SOURCES += main.cpp
+INCLUDEPATH += $$PWD
+SOURCES += $$PWD/main.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += $$PWD/qml.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
-
+DESTDIR = .
 # Default rules for deployment.
-include(deployment.pri)
+#include(deployment.pri)

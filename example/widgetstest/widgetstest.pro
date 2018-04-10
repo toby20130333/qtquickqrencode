@@ -2,11 +2,12 @@ QT += gui core widgets
 
 TARGET = widgetsqrencode
 
-SOURCES += \
-    main.cpp
+INCLUDEPATH += $$PWD
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../lib/dduiqrwidgets/ -ldduiqrwidgets
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../lib/dduiqrwidgets/ -ldduiqrwidgetsd
+SOURCES += \
+    $$PWD/main.cpp
+
+LIBS += -L$$PWD/../../lib/ -ldduiqrwidgets
 
 INCLUDEPATH += $$PWD/../../include/
 DEPENDPATH += $$PWD/../../lib/dduiqrwidgets

@@ -31,7 +31,8 @@ void QREnCode::paint(QPainter *painter)
         painter->setPen(Qt::NoPen);
         painter->setBrush(this->qrBackground);
         painter->drawRect(rect);
-        double scale = (rect.width () - 2.0 * qrMargin) / qrcode->width;
+        int w = qMin(rect.width(),rect.height());
+        double scale = (w - 2.0 * qrMargin) / qrcode->width;
         painter->setBrush(this->qrForeground);
         for (int y = 0; y < qrcode->width; y ++) {
             for (int x = 0; x < qrcode->width; x ++) {
@@ -47,10 +48,10 @@ void QREnCode::paint(QPainter *painter)
         //if qr_logo is empty return
 
         painter->setBrush(QColor("#00ffffff"));
-        double icon_width = (rect.width () - 2.0 * qrMargin) * qrPercent;
+        double icon_width = (w- 2.0 * qrMargin) * qrPercent;
         double icon_height = icon_width;
-        double wrap_x = (rect.width () - icon_width) / 2.0;
-        double wrap_y = (rect.width () - icon_height) / 2.0;
+        double wrap_x = (w - icon_width) / 2.0;
+        double wrap_y = (w- icon_height) / 2.0;
         QRectF wrap(wrap_x - 5, wrap_y - 5, icon_width + 10, icon_height + 10);
         painter->drawRoundRect(wrap, 50, 50);
         if(qrLogo.isEmpty() || qrLogo == QRENCODE_WEBSITE){
@@ -255,7 +256,7 @@ void QREnCode::saveItemToFile()
 #if (QT_VERSION < QT_VERSION_CHECK(5, 4, 0))
     emit errorMessage("Don't Support this function,Please Use Qt Version greate than 5.4.0");
 #else
-    QuickItemGrabber* m_grab;
+//    QuickItemGrabber* m_grab{nullptr};
     if(m_grab == NULL){
         m_grab = new QuickItemGrabber(this);
         connect(m_grab,SIGNAL(grabbed()),this,SLOT(grabChanged()));

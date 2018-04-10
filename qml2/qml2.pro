@@ -4,30 +4,30 @@ TEMPLATE = lib
 TARGET = QtQuick2QREncode
 
 CONFIG += qt plugin
-TARGET = $$qtLibraryTarget($$TARGET)
+#TARGET = $$qtLibraryTarget($$TARGET)
 uri = com.duoduo.components
 CONFIG += DD_USE_C
 
-DESTDIR = $$PWD/../plugins/$$qtLibraryTarget($$TARGET)
+DESTDIR = $$PWD/../plugins/
 MOC_DIR = $$PWD/../.moc
 OBJECTS_DIR = $$PWD/../.obj
 
 # Input
+INCLUDEPATH +=$$PWD
 SOURCES += \
-    qtquickqrencode_plugin.cpp \
-    qrddencode.cpp
+    $$PWD/qtquickqrencode_plugin.cpp \
+    $$PWD/qrddencode.cpp
 
 HEADERS += \
-    qtquickqrencode_plugin.h \
-    qrddencode.h
+    $$PWD/qtquickqrencode_plugin.h \
+    $$PWD/qrddencode.h
 
-greaterThan(QT_VERSION, 5.4.0){
-     message($$QT_VERSION)
-    SOURCES +=quickitemgrabber.cpp
-    HEADERS +=quickitemgrabber.h
+greaterThan(QT_MAJOR_VERSION, 4){
+    SOURCES +=$$PWD/quickitemgrabber.cpp
+    HEADERS +=$$PWD/quickitemgrabber.h
 }
 DD_USE_C:{
-   include(../qrencode/qrencode.pri)
+   include($$PWD/../qrencode/qrencode.pri)
 }
 
 DISTFILES = qmldir

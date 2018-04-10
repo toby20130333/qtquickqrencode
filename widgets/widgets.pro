@@ -11,27 +11,25 @@ TEMPLATE = lib
 
 DEFINES += WIDGETS_LIBRARY
 
-DESTDIR = $$PWD/../lib/$$qtLibraryTarget($$TARGET)
+DESTDIR = $$PWD/../lib/
 MOC_DIR = $$PWD/../.moc
 OBJECTS_DIR = $$PWD/../.obj
 
-SOURCES += dduiqrwidgets.cpp
+INCLUDEPATH += $$PWD
 
-HEADERS += dduiqrwidgets.h\
-        widgets_global.h
+SOURCES += $$PWD/dduiqrwidgets.cpp
 
-unix {
-    target.path = /usr/lib
-    INSTALLS += target
+HEADERS += $$PWD/dduiqrwidgets.h\
+        $$PWD/widgets_global.h
+
+CONFIG += DD_USE_C
+
+DD_USE_C:{
+   include($$PWD/../qrencode/qrencode.pri)
 }
-win32:{
   CHM.path = $$PWD/../include
   CHM.files +=$$PWD/*.h
   CHM.files +=$$PWD/../qrencode/
   INSTALLS += CHM
-}
-CONFIG += DD_USE_C
 
-DD_USE_C:{
-   include(../qrencode/qrencode.pri)
-}
+

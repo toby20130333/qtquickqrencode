@@ -10,5 +10,7 @@ Item {
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 20
+        color: "white"
     }
 }

@@ -6,26 +6,27 @@ TARGET = QtQuick1QREncode
 
 CONFIG += qt plugin
 
-TARGET = $$qtLibraryTarget($$TARGET)
 uri = com.ddui.qmlcomponents
 
 
-DESTDIR = $$PWD/../plugins/$$qtLibraryTarget($$TARGET)
+DESTDIR = $$PWD/../plugins/
 MOC_DIR = $$PWD/../.moc
 OBJECTS_DIR = $$PWD/../.obj
 
 # Input
+INCLUDEPATH += $$PWD
 SOURCES += \
-    dduiqrencode_plugin.cpp \
-    dduiqrencode.cpp
+    $$PWD/dduiqrencode_plugin.cpp \
+    $$PWD/dduiqrencode.cpp
 
 HEADERS += \
-    dduiqrencode_plugin.h \
-    dduiqrencode.h
+    $$PWD/dduiqrencode_plugin.h \
+    $$PWD/dduiqrencode.h
+
 CONFIG += DD_USE_C
 
 DD_USE_C:{
-   include(../qrencode/qrencode.pri)
+   include($$PWD/../qrencode/qrencode.pri)
 }
 DISTFILES = qmldir
 
@@ -37,7 +38,7 @@ DISTFILES = qmldir
     PRE_TARGETDEPS += $$copy_qmldir.target
 }
 
-qmldir.files = qmldir
+    qmldir.files = qmldir
     maemo5 | !isEmpty(MEEGO_VERSION_MAJOR) {
         installPath = /usr/lib/qt4/imports/$$replace(uri, \\., /)
     } else {
@@ -45,4 +46,5 @@ qmldir.files = qmldir
     }
     qmldir.path = $$installPath
     target.path = $$installPath
-    INSTALLS += target qmldir
+#install this plugin to qt sdk plugin path
+INSTALLS += target qmldir
