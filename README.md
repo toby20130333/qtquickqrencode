@@ -1,4 +1,4 @@
-## [2016-05-05 update]QRCode Powered Support QWidgets And QML(qml1 and qml2) Module
+## [2018-04-11update]QRCode Powered Support QWidgets And QML(qml1 and qml2) Module
 Designing cool, interactive interfaces. DuoDuoZhijiao came up with a much better answer for QtQuick1QREncode: `QWidgets QML`, 
 a Widget And a declarative language perfect for designing UIs (and much more). 
 Here's a sample of how QtQuick1QREncode Plugin For QML looks like:
@@ -6,6 +6,10 @@ Here's a sample of how QtQuick1QREncode Plugin For QML looks like:
 ![Add Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_ddui111.png)
 
 ![No Logo](http://7qn7mv.com1.z0.glb.clouddn.com/_ddui22.png)
+
+## Attention Please
+
+*  You should install those plugin to Qt SDK  path like :make install or Use qtcreator's install command
 
 ```
 //QML2 code
@@ -110,12 +114,12 @@ You may use qtcreator to build it.
 
 
 ## How to use with QtQuick1QREncode
-Note that for the following, you need to have `Qt SDK` for Qt5.x or later installed.
+Note that for the following, you need to have `Qt SDK` for Qt4.7 or later installed.
 
 #### QtQuick1QREncode
 You can use QtQuick1QREncode to encode your QtQuick1QREncode UI.
 
-#### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)(Qt5.x or later)
+#### Implemented  QML Extension USE C++ (QQmlExtensionPlugin)(Qt4.x or later)
 Implemented a QML Extension module that:
 - Refer to [http://doc.qt.io/qt-5/qqmlextensionplugin.html](http://doc.qt.io/qt-5/qqmlextensionplugin.html).
 
